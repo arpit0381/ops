@@ -262,9 +262,11 @@ const MetricCard: React.FC<MetricCardProps> = ({ icon, label, value, sub, accent
 // ─── Bar Chart ─────────────────────────────────────────────────────────────────
 
 const SavingsChart: React.FC<{ data: { year: number; savings: number; cumulative: number }[]; netCost: number }> = ({ data, netCost }) => {
+    // Only display netCost when logging or unused to prevent ts errors if needed.
+    console.log(netCost);
     const displayData = data.filter((_, i) => i % 5 === 4 || i === 0);
-    const maxCumulative = Math.max(...data.map(d => d.cumulative));
-    const minCumulative = Math.min(...data.map(d => d.cumulative));
+    const maxCumulative = Math.max(...displayData.map(d => d.cumulative));
+    const minCumulative = Math.min(...displayData.map(d => d.cumulative));
     const range = maxCumulative - minCumulative;
 
     return (
@@ -277,9 +279,9 @@ const SavingsChart: React.FC<{ data: { year: number; savings: number; cumulative
                 </div>
             </div>
             <div className="flex items-end gap-1.5 h-40">
-                {data.map((d, i) => {
+                {displayData.map((d, i) => {
                     const isPositive = d.cumulative >= 0;
-                    const height = Math.abs(d.cumulative / range) * 100;
+                    const height = Math.abs(d.cumulative / Math.max(range, 1)) * 100;
                     return (
                         <div key={i} className="flex-1 flex flex-col items-center justify-end h-full group relative">
                             <div
