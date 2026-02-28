@@ -1,0 +1,47 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-blue: #0284c7;  /* Electric Blue */
+  --color-brand-yellow: #fbbf24; /* Solar Yellow */
+  --color-brand-green: #16a34a; /* Eco Green */
+  --color-brand-dark: #0f172a;
+  --color-brand-light: #f8fafc;
+  
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-serif: "Merriweather", serif;
+}
+
+@layer base {
+  :root {
+    --background: #ffffff;
+    --foreground: #0f172a;
+  }
+
+  .dark {
+    --background: #0f172a;
+    --foreground: #f8fafc;
+  }
+}
+
+@layer base {
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+  }
+}
+
+/* Custom glowing and utility classes */
+@layer utilities {
+  .glow-blue {
+    box-shadow: 0 0 20px rgba(2, 132, 199, 0.5);
+  }
+  .glow-yellow {
+    box-shadow: 0 0 20px rgba(251, 191, 36, 0.5);
+  }
+  .glow-green {
+    box-shadow: 0 0 20px rgba(22, 163, 74, 0.5);
+  }
+  .text-glow {
+    text-shadow: 0 0 10px currentColor;
+  }
+}
