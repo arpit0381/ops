@@ -4,6 +4,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowRight, ArrowLeft, ShieldCheck, Users } from 'lucide-react';
 import { cn } from '../components/Navbar'; // reuse utility
+import { supabase } from '../supabase/client';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -25,33 +26,28 @@ const slides = [
     }
 ];
 
-const testimonials = [
-    {
-        quote: "As part of Energy savings initiative, we decided to pursue clean energy option through Solar Rooftop installation by utilizing idle roof at our Kuppam, Facility. We are happy with quality of services and timely completion of our ~3 MWP Solar plant and would recommend OM Power for Solarizing your premises.",
-        name: "Mr. Anurag Agarwal",
-        title: "Director",
-        company: "RBA Textiles Pvt. Ltd."
-    },
-    {
-        quote: "The OM Power team displayed immense technical expertise and total commitment. We seamlessly transitioned our primary manufacturing hub to 100% solar power with zero operational downtime. Simply phenomenal.",
-        name: "Dr. Vikram Sethi",
-        title: "CEO",
-        company: "Sethi Pharma Group"
-    },
-    {
-        quote: "Our integrated residential township required a subtle, highly-efficient solar solution. OM Power not only met the aesthetic requirements but exceeded our energy generation guarantees. A top-tier engineering firm.",
-        name: "Anjali Mehta",
-        title: "Head of Infrastructure",
-        company: "Platinum Estates"
-    }
-];
+interface Testimonial {
+    id: number;
+    client_name: string;
+    company: string;
+    testimonial: string;
+    rating: number;
+    image_url: string;
+    created_at: string;
+}
 
 const Home: React.FC = () => {
     const heroRef = useRef<HTMLDivElement>(null);
     const [currentSlide, setCurrentSlide] = useState(0);
+    const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
 
-
-
+    useEffect(() => {
+        const fetchTestimonials = async () => {
+            const { data } = await supabase.from('testimonials').select('*').order('created_at', { ascending: false }).limit(3);
+            if (data) setTestimonials(data);
+        };
+        fetchTestimonials();
+    }, []);
 
     const nextSlide = useCallback(() => {
         setCurrentSlide((prev) => (prev + 1) % slides.length);
@@ -457,7 +453,7 @@ const Home: React.FC = () => {
                     {/* 3-card grid */}
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-0 reveal-up">
                         {testimonials.map((test, idx) => {
-                            const initials = test.name.split(' ').filter(Boolean).slice(-2).map((w: string) => w[0]).join('');
+                            const initials = test.client_name.split(' ').filter(Boolean).slice(-2).map((w: string) => w[0]).join('');
                             const colors = ['bg-brand-blue', 'bg-brand-green', 'bg-brand-yellow'];
                             const accentColors = ['border-brand-blue', 'border-brand-green', 'border-brand-yellow'];
                             const textColors = ['text-brand-blue', 'text-brand-green', 'text-brand-yellow'];
@@ -472,7 +468,7 @@ const Home: React.FC = () => {
                                     {/* Stars */}
                                     <div className="flex items-center gap-1 mb-6">
                                         {[...Array(5)].map((_, s) => (
-                                            <svg key={s} className="w-3.5 h-3.5 text-brand-yellow fill-current" viewBox="0 0 20 20">
+                                            <svg key={s} className={`w-3.5 h-3.5 ${s < test.rating ? 'text-brand-yellow' : 'text-gray-700'} fill-current`} viewBox="0 0 20 20">
                                                 <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                                             </svg>
                                         ))}
@@ -483,17 +479,17 @@ const Home: React.FC = () => {
 
                                     {/* Quote text */}
                                     <p className="text-gray-300 text-[15px] font-[300] leading-relaxed flex-1 mb-8">
-                                        {test.quote}
+                                        {test.testimonial}
                                     </p>
 
                                     {/* Client info */}
-                                    <div className={`pt-6 border-t ${accentColors[idx]} border-opacity-30 flex items-center gap-4`}>
-                                        <div className={`w-10 h-10 ${colors[idx]} flex items-center justify-center text-white text-xs font-[900] flex-shrink-0 ${idx === 2 ? 'text-gray-900' : ''}`}>
-                                            {initials}
+                                    <div className={`pt-6 border-t ${accentColors[idx % 3]} border-opacity-30 flex items-center gap-4`}>
+                                        <div className={`w-10 h-10 ${colors[idx % 3]} flex items-center justify-center text-white text-xs font-[900] flex-shrink-0 ${idx % 3 === 2 ? 'text-gray-900' : ''} overflow-hidden`}>
+                                            {test.image_url ? <img src={test.image_url} alt={test.client_name} className="w-full h-full object-cover" /> : initials}
                                         </div>
                                         <div>
-                                            <div className="text-white text-sm font-[800]">{test.name}</div>
-                                            <div className="text-gray-500 text-[0.65rem] font-[500] uppercase tracking-widest">{test.title} · {test.company}</div>
+                                            <div className="text-white text-sm font-[800]">{test.client_name}</div>
+                                            <div className="text-gray-500 text-[0.65rem] font-[500] uppercase tracking-widest">{test.company}</div>
                                         </div>
                                     </div>
                                 </div>

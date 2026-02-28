@@ -40,7 +40,7 @@ const Navbar: React.FC = () => {
         return () => { document.body.style.overflow = ''; };
     }, [isMobileMenuOpen]);
 
-    const lightHeroPages = ['/about', '/products', '/projects', '/services', '/contact', '/partner'];
+    const lightHeroPages = ['/about', '/products', '/projects', '/services', '/contact', '/partner', '/calculator'];
     const isLightHero = lightHeroPages.includes(location.pathname);
 
     /* derived link colour for desktop */

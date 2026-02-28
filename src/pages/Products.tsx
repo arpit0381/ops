@@ -2,10 +2,11 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Download, FileText, ArrowRight, Zap, ShieldCheck, Battery, ChevronRight } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { supabase } from '../supabase/client';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const categories = [
+const BASE_CATEGORIES = [
     {
         id: '01',
         title: 'Solar Panels',
@@ -15,36 +16,6 @@ const categories = [
         accentClass: 'text-brand-blue',
         accentBg: 'bg-brand-blue',
         borderAccent: 'border-brand-blue',
-        items: [
-            {
-                id: 1,
-                name: 'OM Premium Mono PERC 540W',
-                tag: 'Bestseller',
-                tagBg: 'bg-brand-blue',
-                specs: [
-                    { label: 'Efficiency', value: '21.3%' },
-                    { label: 'Warranty', value: '25 Years' },
-                    { label: 'Technology', value: 'Half-Cut PERC' },
-                    { label: 'Application', value: 'Commercial / Utility' },
-                ],
-                img: 'https://images.unsplash.com/photo-1508514177221-188b1fc16e9d?w=800&auto=format&fit=crop',
-                desc: 'Industry-leading monocrystalline PERC module engineered for maximum energy yield in all weather conditions, with zero LID and excellent low-light performance.',
-            },
-            {
-                id: 2,
-                name: 'OM Bifacial Glass-Glass 550W',
-                tag: 'High Yield',
-                tagBg: 'bg-brand-green',
-                specs: [
-                    { label: 'Efficiency', value: '21.5%' },
-                    { label: 'Warranty', value: '30 Years' },
-                    { label: 'Technology', value: 'Bifacial Glass-Glass' },
-                    { label: 'Application', value: 'Industrial / Ground Mount' },
-                ],
-                img: 'https://images.unsplash.com/photo-1548614606-52b4451f994b?w=800&auto=format&fit=crop',
-                desc: 'Dual-glass frameless design generates power from both front and rear sides, achieving up to 30% additional yield on high-albedo surfaces.',
-            },
-        ],
     },
     {
         id: '02',
@@ -55,36 +26,6 @@ const categories = [
         accentClass: 'text-brand-green',
         accentBg: 'bg-brand-green',
         borderAccent: 'border-brand-green',
-        items: [
-            {
-                id: 3,
-                name: 'OM Grid-Tie Central 100KTL',
-                tag: 'Industrial',
-                tagBg: 'bg-brand-blue',
-                specs: [
-                    { label: 'Power', value: '100 kW' },
-                    { label: 'Phase', value: '3-Phase' },
-                    { label: 'Protection', value: 'IP65 Rated' },
-                    { label: 'Monitoring', value: 'Smart / Cloud' },
-                ],
-                img: 'https://images.unsplash.com/photo-1513828583688-c52646db42da?w=800&auto=format&fit=crop',
-                desc: 'Heavy-duty three-phase central inverter for utility-scale and large industrial projects. Features advanced MPPT and AI-driven performance optimization.',
-            },
-            {
-                id: 4,
-                name: 'OM Hybrid String 10kW',
-                tag: 'Smart Home',
-                tagBg: 'bg-brand-yellow',
-                specs: [
-                    { label: 'Power', value: '10 kW' },
-                    { label: 'Mode', value: 'Hybrid / Off-Grid' },
-                    { label: 'Connectivity', value: 'Wi-Fi / App' },
-                    { label: 'Noise', value: 'Zero dB' },
-                ],
-                img: 'https://images.unsplash.com/photo-1510410769539-7756f74a92de?w=800&auto=format&fit=crop',
-                desc: 'Seamlessly integrates grid, solar, and battery power for residential and light commercial applications with real-time app-based monitoring.',
-            },
-        ],
     },
     {
         id: '03',
@@ -95,42 +36,30 @@ const categories = [
         accentClass: 'text-brand-yellow',
         accentBg: 'bg-brand-yellow',
         borderAccent: 'border-brand-yellow',
-        items: [
-            {
-                id: 5,
-                name: 'OM LiFePO4 PowerWall 5kWh',
-                tag: 'Future Ready',
-                tagBg: 'bg-brand-green',
-                specs: [
-                    { label: 'Capacity', value: '5 kWh' },
-                    { label: 'Cycle Life', value: '6,000 Cycles' },
-                    { label: 'DoD', value: '95%' },
-                    { label: 'Design', value: 'Modular Stack' },
-                ],
-                img: 'https://images.unsplash.com/photo-1593941707882-a5bba14938c7?w=800&auto=format&fit=crop',
-                desc: 'Modular lithium iron phosphate battery wall with industry-leading 6,000-cycle life. Stack up to 30 kWh per unit for complete energy independence.',
-            },
-            {
-                id: 6,
-                name: 'OM Industrial BESS 200kWh',
-                tag: 'Utility Scale',
-                tagBg: 'bg-brand-blue',
-                specs: [
-                    { label: 'Capacity', value: '200 kWh' },
-                    { label: 'Chemistry', value: 'LiFePO4' },
-                    { label: 'Management', value: 'Active BMS' },
-                    { label: 'Application', value: 'C&I / Grid' },
-                ],
-                img: 'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=800&auto=format&fit=crop',
-                desc: 'Enterprise-grade containerized battery energy storage system for commercial and industrial peak shaving, demand charge reduction, and grid stabilization.',
-            },
-        ],
     },
 ];
 
+interface ProductData {
+    id: number;
+    name: string;
+    category: string;
+    description: string;
+    specs: string;
+    image_url: string;
+}
+
 const Products: React.FC = () => {
     const pageRef = useRef<HTMLDivElement>(null);
-    const [activeCategory, setActiveCategory] = useState(0);
+    const [activeCategoryIndex, setActiveCategoryIndex] = useState(0);
+    const [products, setProducts] = useState<ProductData[]>([]);
+
+    useEffect(() => {
+        const fetchProducts = async () => {
+            const { data } = await supabase.from('products').select('*').order('created_at', { ascending: false });
+            if (data) setProducts(data);
+        };
+        fetchProducts();
+    }, []);
 
     useEffect(() => {
         if (!pageRef.current) return;
@@ -155,8 +84,24 @@ const Products: React.FC = () => {
         }, pageRef);
         return () => ctx.revert();
     }, []);
+    const categoriesWithItems = BASE_CATEGORIES.map(cat => ({
+        ...cat,
+        items: products.filter(p => p.category === cat.title).map(p => ({
+            id: p.id,
+            name: p.name,
+            tag: 'Featured', // Default tag
+            tagBg: cat.accentBg,
+            specs: p.specs.split(',').map(s => {
+                const parts = s.split(':');
+                if (parts.length === 2) return { label: parts[0].trim(), value: parts[1].trim() };
+                return { label: 'Spec', value: s.trim() }; // fallback
+            }),
+            img: p.image_url || 'https://images.unsplash.com/photo-1508514177221-188b1fc16e9d?w=800&auto=format&fit=crop',
+            desc: p.description,
+        }))
+    }));
 
-    const activeCat = categories[activeCategory];
+    const activeCat = categoriesWithItems[activeCategoryIndex];
 
     return (
         <div className="bg-white font-sans overflow-x-hidden" ref={pageRef}>
@@ -222,15 +167,15 @@ const Products: React.FC = () => {
             <section className="bg-white border-b border-gray-100 sticky top-[60px] z-40">
                 <div className="container mx-auto px-6 max-w-7xl">
                     <div className="flex items-center gap-0 overflow-x-auto">
-                        {categories.map((cat, i) => {
+                        {categoriesWithItems.map((cat, i) => {
                             const Icon = cat.icon;
                             return (
                                 <button
                                     key={i}
-                                    onClick={() => setActiveCategory(i)}
-                                    className={`group flex items-center gap-2.5 px-6 py-5 text-[0.7rem] font-[800] uppercase tracking-widest whitespace-nowrap border-b-2 transition-all duration-300 ${activeCategory === i
-                                            ? `${cat.accentClass} border-current`
-                                            : 'text-gray-400 border-transparent hover:text-gray-700'
+                                    onClick={() => setActiveCategoryIndex(i)}
+                                    className={`group flex items-center gap-2.5 px-6 py-5 text-[0.7rem] font-[800] uppercase tracking-widest whitespace-nowrap border-b-2 transition-all duration-300 ${activeCategoryIndex === i
+                                        ? `${cat.accentClass} border-current`
+                                        : 'text-gray-400 border-transparent hover:text-gray-700'
                                         }`}
                                 >
                                     <Icon className="w-3.5 h-3.5" />
@@ -268,6 +213,11 @@ const Products: React.FC = () => {
                 {/* Product rows */}
                 <div className="container mx-auto px-6 max-w-7xl pb-24">
                     <div className="space-y-4">
+                        {activeCat.items.length === 0 && (
+                            <div className="py-24 text-center text-gray-400 font-[500] uppercase tracking-widest text-sm reveal-up">
+                                No products found in this category.
+                            </div>
+                        )}
                         {activeCat.items.map((item, i) => (
                             <div
                                 key={item.id}
@@ -306,14 +256,16 @@ const Products: React.FC = () => {
                                             </p>
 
                                             {/* Specs grid */}
-                                            <div className="grid grid-cols-2 md:grid-cols-4 gap-0 border-t border-gray-100 mb-8">
-                                                {item.specs.map((spec, si) => (
-                                                    <div key={si} className={`py-4 pr-4 ${si < item.specs.length - 1 ? 'border-r border-gray-100 mr-4' : ''}`}>
-                                                        <div className={`text-[0.55rem] font-[800] uppercase tracking-[0.2em] ${activeCat.accentClass} mb-1`}>{spec.label}</div>
-                                                        <div className="font-[800] text-gray-900 text-base">{spec.value}</div>
-                                                    </div>
-                                                ))}
-                                            </div>
+                                            {item.specs.length > 0 && item.specs[0].value !== '' && (
+                                                <div className="grid grid-cols-2 md:grid-cols-4 gap-0 border-t border-gray-100 mb-8 max-w-2xl">
+                                                    {item.specs.map((spec, si) => (
+                                                        <div key={si} className={`py-4 pr-4 border-r border-gray-100 mr-4 last:border-r-0 last:mr-0`}>
+                                                            <div className={`text-[0.55rem] font-[800] uppercase tracking-[0.2em] ${activeCat.accentClass} mb-1 truncate`}>{spec.label}</div>
+                                                            <div className="font-[800] text-gray-900 text-sm truncate">{spec.value}</div>
+                                                        </div>
+                                                    ))}
+                                                </div>
+                                            )}
                                         </div>
 
                                         {/* CTAs */}
