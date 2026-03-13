@@ -12,7 +12,7 @@ const links = [
     { name: 'Home', path: '/' },
     { name: 'About', path: '/about' },
     { name: 'Services', path: '/services' },
-    { name: 'Products', path: '/products' },
+    // { name: 'Products', path: '/products' },
     { name: 'Projects', path: '/projects' },
     { name: 'Contact', path: '/contact' },
 ];
@@ -72,8 +72,8 @@ const Navbar: React.FC = () => {
                         <Link to="/partner" className="bg-brand-green text-white px-6 flex items-center justify-center hover:bg-green-700 transition-colors gap-2">
                             <Users className="w-4 h-4" /> Partner With Us
                         </Link>
-                        <a href="tel:18001234567" className="bg-brand-yellow text-brand-dark px-6 flex items-center justify-center hover:bg-yellow-500 transition-colors gap-2">
-                            <Phone className="w-4 h-4" /> 1800 123 4567
+                        <a href="tel:08853989909" className="bg-brand-yellow text-brand-dark px-6 flex items-center justify-center hover:bg-yellow-500 transition-colors gap-2">
+                            <Phone className="w-4 h-4" /> 088539 89909
                         </a>
                     </div>
                 </div>
@@ -282,11 +282,11 @@ const Navbar: React.FC = () => {
                         <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
                     </Link>
                     <a
-                        href="tel:18001234567"
+                        href="tel:08853989909"
                         className="flex items-center justify-between w-full border border-gray-200 text-gray-700 px-5 py-3.5 text-xs font-[700] uppercase tracking-widest hover:border-gray-900 transition-colors"
                     >
                         <span className="flex items-center gap-2">
-                            <Phone className="w-3.5 h-3.5" /> 1800 123 4567
+                            <Phone className="w-3.5 h-3.5" /> 088539 89909
                         </span>
                         <ArrowRight className="w-3.5 h-3.5" />
                     </a>

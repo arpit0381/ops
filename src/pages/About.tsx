@@ -190,7 +190,7 @@ const About: React.FC = () => {
                             <div className="reveal-up space-y-6">
                                 <div className="aspect-[3/4] rounded-2xl overflow-hidden">
                                     <img
-                                        src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=2070&auto=format&fit=crop"
+                                        src="/g5.png"
                                         alt="Industrial Solar Project"
                                         className="w-full h-full object-cover hover:scale-105 transition-transform duration-1000"
                                     />

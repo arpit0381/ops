@@ -117,7 +117,7 @@ const AdminDashboard: React.FC = () => {
     const navigate = useNavigate();
     const [activeTab, setActiveTab] = useState('overview');
     const [isLoading, setIsLoading] = useState(true);
-    const [adminEmail, setAdminEmail] = useState('admin@ompowersolutions.com');
+    const [adminEmail, setAdminEmail] = useState('admin@ompowersolution.com');
     const [sidebarOpen, setSidebarOpen] = useState(true);
 
     const [stats, setStats] = useState({ projects: 0, inquiries: 0, partners: 0 });

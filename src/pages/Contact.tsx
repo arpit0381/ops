@@ -151,19 +151,19 @@ const Contact: React.FC = () => {
                                     icon: MapPin,
                                     label: 'Head Office',
                                     accent: 'bg-brand-blue',
-                                    lines: ['123 Solar Avenue, Green Business Park,', 'Phase-1, New Delhi, India — 110001'],
+                                    lines: ['Sector 22 New Transport Nagar Gida Sahjanwa,', 'Gorakhpur, India, Uttar Pradesh'],
                                 },
                                 {
                                     icon: Phone,
                                     label: 'Phone',
                                     accent: 'bg-brand-green',
-                                    lines: ['+91 98765 43210', '+91 011 4567 8900'],
+                                    lines: ['088539 89909'],
                                 },
                                 {
                                     icon: Mail,
                                     label: 'Email',
                                     accent: 'bg-brand-yellow',
-                                    lines: ['info@ompowersolutions.com', 'support@ompowersolutions.com'],
+                                    lines: ['info@ompowersolution.com'],
                                 },
                             ].map((item, i) => {
                                 const Icon = item.icon;
@@ -189,7 +189,7 @@ const Contact: React.FC = () => {
                             {/* Quick actions */}
                             <div className="pt-10 space-y-3">
                                 <a
-                                    href="https://wa.me/919876543210"
+                                    href="https://wa.me/918853989909"
                                     target="_blank"
                                     rel="noreferrer"
                                     className="flex items-center justify-between gap-3 border border-gray-200 px-5 py-4 hover:border-gray-900 transition-colors group"
@@ -201,7 +201,7 @@ const Contact: React.FC = () => {
                                     <ArrowRight className="w-3.5 h-3.5 text-gray-400 group-hover:translate-x-0.5 transition-transform" />
                                 </a>
                                 <a
-                                    href="tel:+919876543210"
+                                    href="tel:08853989909"
                                     className="flex items-center justify-between gap-3 bg-brand-blue px-5 py-4 hover:bg-brand-blue/90 transition-colors group"
                                 >
                                     <div className="flex items-center gap-3">
@@ -276,7 +276,7 @@ const Contact: React.FC = () => {
                                             onFocus={() => setFocusedField('name')}
                                             onBlur={() => setFocusedField(null)}
                                             type="text"
-                                            placeholder="Rajesh Sharma"
+                                            placeholder="Enter your name"
                                             className={`${inputBase} ${inputFocused('name')}`}
                                             required
                                             disabled={status === 'loading'}
@@ -293,7 +293,7 @@ const Contact: React.FC = () => {
                                             onFocus={() => setFocusedField('email')}
                                             onBlur={() => setFocusedField(null)}
                                             type="email"
-                                            placeholder="rajesh@company.com"
+                                            placeholder="Enter your email"
                                             className={`${inputBase} ${inputFocused('email')}`}
                                             required
                                             disabled={status === 'loading'}
@@ -314,7 +314,7 @@ const Contact: React.FC = () => {
                                             onFocus={() => setFocusedField('phone')}
                                             onBlur={() => setFocusedField(null)}
                                             type="tel"
-                                            placeholder="+91 90000 00000"
+                                            placeholder="Enter your phone number"
                                             className={`${inputBase} ${inputFocused('phone')}`}
                                             required
                                             disabled={status === 'loading'}
@@ -405,7 +405,7 @@ const Contact: React.FC = () => {
                         allowFullScreen={false}
                         loading="lazy"
                         referrerPolicy="no-referrer-when-downgrade"
-                        title="OM Power Solutions — New Delhi Office"
+                        title="OM Power Solutions — Gorakhpur Office"
                     />
                 </div>
             </section>
@@ -420,9 +420,9 @@ const Contact: React.FC = () => {
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-0 pb-16">
                         {[
-                            { city: 'New Delhi', role: 'Registered & Head Office', addr: '123 Solar Avenue, Green Business Park, Phase-1, New Delhi — 110001', accent: 'bg-brand-blue' },
-                            { city: 'Mumbai', role: 'Western Region Office', addr: 'Plot 45, MIDC Industrial Area, Andheri East, Mumbai — 400093', accent: 'bg-brand-green' },
-                            { city: 'Bangalore', role: 'Southern Region Office', addr: '7th Floor, Prestige Tower, MG Road, Bangalore — 560001', accent: 'bg-brand-yellow' },
+                            { city: 'Gorakhpur', role: 'Registered & Head Office', addr: 'Sector 22 New Transport Nagar Gida Sahjanwa, Gorakhpur, India, Uttar Pradesh', accent: 'bg-brand-blue' },
+                            // { city: 'Mumbai', role: 'Western Region Office', addr: 'Plot 45, MIDC Industrial Area, Andheri East, Mumbai — 400093', accent: 'bg-brand-green' },
+                            // { city: 'Bangalore', role: 'Southern Region Office', addr: '7th Floor, Prestige Tower, MG Road, Bangalore — 560001', accent: 'bg-brand-yellow' },
                         ].map((office, i) => (
                             <div key={i} className={`p-8 md:p-10 border-t border-white/10 ${i < 2 ? 'md:border-r md:border-r-white/10' : ''} group hover:bg-white/5 transition-colors duration-300`}>
                                 <div className={`w-1.5 h-1.5 ${office.accent} mb-6`} />

@@ -42,11 +42,11 @@ const Footer: React.FC = () => {
                             <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                         </Link>
                         <a
-                            href="tel:+919876543210"
+                            href="tel:08853989909"
                             className="inline-flex items-center gap-3 border border-white/20 text-white px-8 py-4 font-[600] text-sm tracking-wide rounded-none hover:border-white/50 transition-colors"
                         >
                             <Phone className="w-4 h-4 text-brand-green" />
-                            +91 98765 43210
+                            088539 89909
                         </a>
                     </div>
                 </div>
@@ -145,19 +145,19 @@ const Footer: React.FC = () => {
                             <li className="flex items-start gap-3">
                                 <MapPin className="w-4 h-4 text-gray-500 mt-1 flex-shrink-0" />
                                 <span className="text-gray-400 text-[14px] font-[300] leading-relaxed">
-                                    123 Solar Avenue, Green Business Park,<br />New Delhi – 110001, India
+                                    Sector 22 New Transport Nagar Gida Sahjanwa,<br />Gorakhpur, India, Uttar Pradesh
                                 </span>
                             </li>
                             <li className="flex items-center gap-3">
                                 <Phone className="w-4 h-4 text-gray-500 flex-shrink-0" />
-                                <a href="tel:+919876543210" className="text-gray-400 text-[14px] font-[400] hover:text-white transition-colors">
-                                    +91 98765 43210
+                                <a href="tel:08853989909" className="text-gray-400 text-[14px] font-[400] hover:text-white transition-colors">
+                                    088539 89909
                                 </a>
                             </li>
                             <li className="flex items-center gap-3">
                                 <Mail className="w-4 h-4 text-gray-500 flex-shrink-0" />
-                                <a href="mailto:info@ompowersolutions.com" className="text-gray-400 text-[14px] font-[400] hover:text-white transition-colors">
-                                    info@ompowersolutions.com
+                                <a href="mailto:info@ompowersolution.com" className="text-gray-400 text-[14px] font-[400] hover:text-white transition-colors">
+                                    info@ompowersolution.com
                                 </a>
                             </li>
                         </ul>

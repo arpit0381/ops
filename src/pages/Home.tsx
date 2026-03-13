@@ -15,12 +15,12 @@ const slides = [
         subtitle: "Brighter tomorrow powered by Sun"
     },
     {
-        image: "https://images.unsplash.com/photo-1548614606-52b4451f994b?q=80&w=2070&auto=format&fit=crop",
+        image: "/res.png",
         title: <>Commercial Grade<br /><span className="text-brand-green">Energy Systems</span><br />Built to last.</>,
         subtitle: "Maximizing ROI for your business operations"
     },
     {
-        image: "https://images.unsplash.com/photo-1613665813446-82a100462cca?q=80&w=2070&auto=format&fit=crop",
+        image: "/c3.png",
         title: <>Zero Bills,<br /><span className="text-brand-yellow">Infinite Power.</span><br />Go Independent.</>,
         subtitle: "Smart residential solar ecosystems"
     }
@@ -262,7 +262,7 @@ const Home: React.FC = () => {
                             {/* Image — flush to right edge on desktop */}
                             <div className="relative overflow-hidden group" style={{ aspectRatio: '4/3' }}>
                                 <img
-                                    src="https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?q=80&w=2070&auto=format&fit=crop"
+                                    src="/agr.jpg"
                                     alt="Engineers inspecting solar panels"
                                     className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-1000 ease-out"
                                 />
@@ -336,7 +336,7 @@ const Home: React.FC = () => {
                             title: 'Commercial',
                             subtitle: 'Corporate & Retail Spaces',
                             desc: 'High-yield rooftop and ground-mount solar for offices, malls, hotels, and commercial complexes. Optimized for ESG compliance, maximum savings, and zero downtime.',
-                            img: 'https://images.unsplash.com/photo-1548614606-52b4451f994b?w=1200&auto=format&fit=crop',
+                            img: '/com.png',
                             accent: 'bg-brand-blue',
                             accentText: 'text-brand-blue',
                             tag: 'Commercial',
@@ -346,7 +346,7 @@ const Home: React.FC = () => {
                             title: 'Industrial',
                             subtitle: 'Manufacturing & Plants',
                             desc: 'Megawatt-scale ground-mount and rooftop systems built for 24×7 continuous operations. Engineered to power factories, warehouses, and processing units reliably.',
-                            img: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=1200&auto=format&fit=crop',
+                            img: '/g7.png',
                             accent: 'bg-brand-yellow',
                             accentText: 'text-brand-yellow',
                             tag: 'Industrial',
@@ -356,7 +356,7 @@ const Home: React.FC = () => {
                             title: 'Residential',
                             subtitle: 'Premium Housing & Villas',
                             desc: 'Silent, sleek, highly efficient home solar systems with smart monitoring. Guarantee zero electricity bills and complete household energy independence.',
-                            img: 'https://images.unsplash.com/photo-1613665813446-82a100462cca?w=1200&auto=format&fit=crop',
+                            img: '/offg.jpg',
                             accent: 'bg-brand-green',
                             accentText: 'text-brand-green',
                             tag: 'Residential',
@@ -522,137 +522,139 @@ const Home: React.FC = () => {
             </section>
 
             {/* ── BLOG SECTION ─────────────────────────────────── */}
-            <section className="py-0 bg-white overflow-hidden">
+            {false && (
+                <section className="py-0 bg-white overflow-hidden">
 
-                {/* Top rule + label */}
-                <div className="container mx-auto px-6 max-w-7xl">
-                    <div className="flex items-center gap-5 py-10 reveal-up">
-                        <div className="h-px flex-1 bg-gray-200" />
-                        <span className="text-[0.6rem] font-[800] tracking-[0.25em] uppercase text-gray-400 whitespace-nowrap">
-                            Insights & Updates
-                        </span>
-                        <div className="h-px flex-1 bg-gray-200" />
-                    </div>
-                </div>
-
-                <div className="container mx-auto px-6 max-w-7xl pb-24">
-
-                    {/* Section Header */}
-                    <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-14 reveal-up">
-                        <div>
-                            <div className="text-[4rem] font-[900] text-gray-100 leading-none tracking-tight select-none mb-1">03</div>
-                            <h2 className="text-4xl md:text-5xl font-[900] text-gray-900 leading-[1.0] tracking-tight">
-                                From Our <span className="text-brand-blue">Blog.</span>
-                            </h2>
+                    {/* Top rule + label */}
+                    <div className="container mx-auto px-6 max-w-7xl">
+                        <div className="flex items-center gap-5 py-10 reveal-up">
+                            <div className="h-px flex-1 bg-gray-200" />
+                            <span className="text-[0.6rem] font-[800] tracking-[0.25em] uppercase text-gray-400 whitespace-nowrap">
+                                Insights & Updates
+                            </span>
+                            <div className="h-px flex-1 bg-gray-200" />
                         </div>
-                        <Link
-                            to="/blog"
-                            className="mt-6 md:mt-0 inline-flex items-center gap-2 text-xs font-[800] uppercase tracking-widest text-brand-blue border-b-2 border-brand-blue pb-0.5 hover:text-gray-900 hover:border-gray-900 transition-colors group"
-                        >
-                            View All Posts
-                            <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-                        </Link>
                     </div>
 
-                    {/* Blog Grid — Featured + 2 secondary */}
-                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 reveal-up">
+                    <div className="container mx-auto px-6 max-w-7xl pb-24">
 
-                        {/* Featured Post */}
-                        <div className="lg:col-span-6 group cursor-pointer">
-                            <div className="overflow-hidden mb-5" style={{ aspectRatio: '16/10' }}>
-                                <img
-                                    src="https://images.unsplash.com/photo-1509391366360-2e959784a276?q=80&w=1600&auto=format&fit=crop"
-                                    alt="Solar Energy Future"
-                                    className="w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-1000 ease-out"
-                                />
+                        {/* Section Header */}
+                        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-14 reveal-up">
+                            <div>
+                                <div className="text-[4rem] font-[900] text-gray-100 leading-none tracking-tight select-none mb-1">03</div>
+                                <h2 className="text-4xl md:text-5xl font-[900] text-gray-900 leading-[1.0] tracking-tight">
+                                    From Our <span className="text-brand-blue">Blog.</span>
+                                </h2>
                             </div>
-                            <div className="flex items-center gap-3 mb-4">
-                                <span className="text-[0.6rem] font-[800] uppercase tracking-[0.2em] text-white bg-brand-blue px-3 py-1">
-                                    Solar Technology
-                                </span>
-                                <span className="text-gray-400 text-xs font-[400]">8 min read</span>
-                                <span className="text-gray-300 text-xs">·</span>
-                                <span className="text-gray-400 text-xs font-[400]">Feb 2025</span>
-                            </div>
-                            <h3 className="text-2xl md:text-3xl font-[900] text-gray-900 leading-snug tracking-tight mb-3 group-hover:text-brand-blue transition-colors duration-300">
-                                How Next-Gen Solar Tech is Redefining India's Commercial Energy Landscape
-                            </h3>
-                            <p className="text-gray-500 text-[15px] font-[300] leading-relaxed mb-5 line-clamp-3">
-                                From bifacial panels to AI-powered monitoring, advanced solar technologies are transforming how commercial enterprises across India generate, manage, and optimise energy — at scale, and with precision.
-                            </p>
-                            <div className="flex items-center gap-3 pt-4 border-t border-gray-100">
-                                <div className="w-8 h-8 bg-brand-blue rounded-full flex items-center justify-center text-white text-xs font-[900]">OP</div>
-                                <div>
-                                    <div className="text-xs font-[700] text-gray-900">OM Power Editorial</div>
-                                    <div className="text-[0.6rem] font-[500] text-gray-400 uppercase tracking-widest">Research & Insights</div>
+                            <Link
+                                to="/blog"
+                                className="mt-6 md:mt-0 inline-flex items-center gap-2 text-xs font-[800] uppercase tracking-widest text-brand-blue border-b-2 border-brand-blue pb-0.5 hover:text-gray-900 hover:border-gray-900 transition-colors group"
+                            >
+                                View All Posts
+                                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                            </Link>
+                        </div>
+
+                        {/* Blog Grid — Featured + 2 secondary */}
+                        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 reveal-up">
+
+                            {/* Featured Post */}
+                            <div className="lg:col-span-6 group cursor-pointer">
+                                <div className="overflow-hidden mb-5" style={{ aspectRatio: '16/10' }}>
+                                    <img
+                                        src="https://images.unsplash.com/photo-1509391366360-2e959784a276?q=80&w=1600&auto=format&fit=crop"
+                                        alt="Solar Energy Future"
+                                        className="w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-1000 ease-out"
+                                    />
+                                </div>
+                                <div className="flex items-center gap-3 mb-4">
+                                    <span className="text-[0.6rem] font-[800] uppercase tracking-[0.2em] text-white bg-brand-blue px-3 py-1">
+                                        Solar Technology
+                                    </span>
+                                    <span className="text-gray-400 text-xs font-[400]">8 min read</span>
+                                    <span className="text-gray-300 text-xs">·</span>
+                                    <span className="text-gray-400 text-xs font-[400]">Feb 2025</span>
+                                </div>
+                                <h3 className="text-2xl md:text-3xl font-[900] text-gray-900 leading-snug tracking-tight mb-3 group-hover:text-brand-blue transition-colors duration-300">
+                                    How Next-Gen Solar Tech is Redefining India's Commercial Energy Landscape
+                                </h3>
+                                <p className="text-gray-500 text-[15px] font-[300] leading-relaxed mb-5 line-clamp-3">
+                                    From bifacial panels to AI-powered monitoring, advanced solar technologies are transforming how commercial enterprises across India generate, manage, and optimise energy — at scale, and with precision.
+                                </p>
+                                <div className="flex items-center gap-3 pt-4 border-t border-gray-100">
+                                    <div className="w-8 h-8 bg-brand-blue rounded-full flex items-center justify-center text-white text-xs font-[900]">OP</div>
+                                    <div>
+                                        <div className="text-xs font-[700] text-gray-900">OM Power Editorial</div>
+                                        <div className="text-[0.6rem] font-[500] text-gray-400 uppercase tracking-widest">Research & Insights</div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        {/* Secondary Posts */}
-                        <div className="lg:col-span-6 flex flex-col gap-6">
-                            {[
-                                {
-                                    img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=800&auto=format&fit=crop',
-                                    category: 'Policy',
-                                    categoryBg: 'bg-brand-green',
-                                    read: '5 min read',
-                                    date: 'Jan 2025',
-                                    title: "India's Net Zero 2070 Pledge — What It Means for Solar EPC Companies",
-                                    desc: "The government's ambitious climate targets are reshaping the solar EPC industry. We break down what these policy shifts mean for large-scale infrastructure players.",
-                                },
-                                {
-                                    img: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=800&auto=format&fit=crop',
-                                    category: 'Case Study',
-                                    categoryBg: 'bg-brand-yellow',
-                                    read: '6 min read',
-                                    date: 'Dec 2024',
-                                    title: "Case Study: 3 MWP Industrial Installation for RBA Textiles",
-                                    desc: "How OM Power designed, engineered, and delivered a 3 MWP rooftop solar plant for RBA Textiles in just 90 days — on-time and within budget.",
-                                },
-                            ].map((post, i) => (
-                                <div key={i} className="group grid grid-cols-12 gap-5 border-t border-gray-100 pt-6 cursor-pointer">
-                                    {/* Thumbnail */}
-                                    <div className="col-span-4 overflow-hidden" style={{ aspectRatio: '4/3' }}>
-                                        <img
-                                            src={post.img}
-                                            alt={post.title}
-                                            className="w-full h-full object-cover group-hover:scale-[1.05] transition-transform duration-700 ease-out"
-                                        />
-                                    </div>
-                                    {/* Content */}
-                                    <div className="col-span-8 flex flex-col justify-between">
-                                        <div>
-                                            <div className="flex items-center gap-2 mb-3">
-                                                <span className={`text-[0.55rem] font-[800] uppercase tracking-[0.2em] text-white ${post.categoryBg} px-2 py-0.5`}>
-                                                    {post.category}
-                                                </span>
-                                                <span className="text-gray-400 text-xs">{post.read}</span>
-                                                <span className="text-gray-300 text-xs">·</span>
-                                                <span className="text-gray-400 text-xs">{post.date}</span>
+                            {/* Secondary Posts */}
+                            <div className="lg:col-span-6 flex flex-col gap-6">
+                                {[
+                                    {
+                                        img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=800&auto=format&fit=crop',
+                                        category: 'Policy',
+                                        categoryBg: 'bg-brand-green',
+                                        read: '5 min read',
+                                        date: 'Jan 2025',
+                                        title: "India's Net Zero 2070 Pledge — What It Means for Solar EPC Companies",
+                                        desc: "The government's ambitious climate targets are reshaping the solar EPC industry. We break down what these policy shifts mean for large-scale infrastructure players.",
+                                    },
+                                    {
+                                        img: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=800&auto=format&fit=crop',
+                                        category: 'Case Study',
+                                        categoryBg: 'bg-brand-yellow',
+                                        read: '6 min read',
+                                        date: 'Dec 2024',
+                                        title: "Case Study: 3 MWP Industrial Installation for RBA Textiles",
+                                        desc: "How OM Power designed, engineered, and delivered a 3 MWP rooftop solar plant for RBA Textiles in just 90 days — on-time and within budget.",
+                                    },
+                                ].map((post, i) => (
+                                    <div key={i} className="group grid grid-cols-12 gap-5 border-t border-gray-100 pt-6 cursor-pointer">
+                                        {/* Thumbnail */}
+                                        <div className="col-span-4 overflow-hidden" style={{ aspectRatio: '4/3' }}>
+                                            <img
+                                                src={post.img}
+                                                alt={post.title}
+                                                className="w-full h-full object-cover group-hover:scale-[1.05] transition-transform duration-700 ease-out"
+                                            />
+                                        </div>
+                                        {/* Content */}
+                                        <div className="col-span-8 flex flex-col justify-between">
+                                            <div>
+                                                <div className="flex items-center gap-2 mb-3">
+                                                    <span className={`text-[0.55rem] font-[800] uppercase tracking-[0.2em] text-white ${post.categoryBg} px-2 py-0.5`}>
+                                                        {post.category}
+                                                    </span>
+                                                    <span className="text-gray-400 text-xs">{post.read}</span>
+                                                    <span className="text-gray-300 text-xs">·</span>
+                                                    <span className="text-gray-400 text-xs">{post.date}</span>
+                                                </div>
+                                                <h4 className="text-base md:text-lg font-[800] text-gray-900 leading-snug tracking-tight group-hover:text-brand-blue transition-colors duration-300 mb-2">
+                                                    {post.title}
+                                                </h4>
+                                                <p className="text-gray-400 text-xs font-[300] leading-relaxed line-clamp-2 hidden md:block">
+                                                    {post.desc}
+                                                </p>
                                             </div>
-                                            <h4 className="text-base md:text-lg font-[800] text-gray-900 leading-snug tracking-tight group-hover:text-brand-blue transition-colors duration-300 mb-2">
-                                                {post.title}
-                                            </h4>
-                                            <p className="text-gray-400 text-xs font-[300] leading-relaxed line-clamp-2 hidden md:block">
-                                                {post.desc}
-                                            </p>
-                                        </div>
-                                        <div className="mt-3">
-                                            <span className="inline-flex items-center gap-1 text-[0.6rem] font-[800] uppercase tracking-widest text-brand-blue border-b border-brand-blue pb-0.5">
-                                                Read More <ArrowRight className="w-3 h-3" />
-                                            </span>
+                                            <div className="mt-3">
+                                                <span className="inline-flex items-center gap-1 text-[0.6rem] font-[800] uppercase tracking-widest text-brand-blue border-b border-brand-blue pb-0.5">
+                                                    Read More <ArrowRight className="w-3 h-3" />
+                                                </span>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            ))}
+                                ))}
 
-                            {/* Bottom border for symmetry */}
-                            <div className="border-t border-gray-100" />
+                                {/* Bottom border for symmetry */}
+                                <div className="border-t border-gray-100" />
+                            </div>
                         </div>
                     </div>
-                </div>
-            </section>
+                </section>
+            )}
         </div>
     );
 };

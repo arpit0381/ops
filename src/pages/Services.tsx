@@ -19,7 +19,7 @@ const services = [
         accent: 'bg-brand-green',
         accentText: 'text-brand-green',
         accentBorder: 'border-brand-green',
-        img: 'https://images.unsplash.com/photo-1613665813446-82a100462cca?w=1200&auto=format&fit=crop',
+        img: '/offg.jpg',
         desc: 'Complete rooftop solar ecosystems for homes — from 1 kW to 100 kW. Zero electricity bills, smart monitoring, full subsidy assistance, and a 25-year performance guarantee.',
         points: ['Subsidy Procurement Support', 'Net Metering Setup', 'App-Based Monitoring', '25-Year Yield Guarantee'],
     },
@@ -32,7 +32,7 @@ const services = [
         accent: 'bg-brand-blue',
         accentText: 'text-brand-blue',
         accentBorder: 'border-brand-blue',
-        img: 'https://images.unsplash.com/photo-1548614606-52b4451f994b?w=1200&auto=format&fit=crop',
+        img: '/com.png',
         desc: 'High-yield rooftop and carport solar for offices, retail complexes, hotels, and commercial buildings. Optimized for ESG compliance, CAPEX/OPEX models, and maximum ROI.',
         points: ['CAPEX & OPEX Models', 'ESG Compliance Reports', 'On-Bill Financing', 'Multi-Site Management'],
     },
@@ -45,7 +45,7 @@ const services = [
         accent: 'bg-brand-yellow',
         accentText: 'text-brand-yellow',
         accentBorder: 'border-brand-yellow',
-        img: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=1200&auto=format&fit=crop',
+        img: '/g7.png',
         desc: 'Megawatt-scale ground-mount and rooftop solar engineered for 24×7 continuous industrial operations. From 500 kW to 10 MW+, built for factories, warehouses, and processing plants.',
         points: ['Upto 10 MW+ Installations', 'Ground Mount & Rooftop', 'Power Purchase Agreements', 'Load Analysis & Sizing'],
     },
@@ -71,7 +71,7 @@ const services = [
         accent: 'bg-brand-green',
         accentText: 'text-brand-green',
         accentBorder: 'border-brand-green',
-        img: 'https://images.unsplash.com/photo-1508514177221-188b1fc16e9d?w=1200&auto=format&fit=crop',
+        img: '/oms.jpg',
         desc: 'Comprehensive Annual Maintenance Contracts (AMC) for plants we install and third-party systems. Preventive + corrective maintenance, performance reporting, and inverter warranties.',
         points: ['AMC Contracts Available', 'Remote Performance Monitoring', 'Panel Cleaning & Inspection', 'Inverter & BOS Maintenance'],
     },
@@ -377,7 +377,7 @@ const Services: React.FC = () => {
                                 Book Free Site Survey
                                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                             </Link>
-                            <a href="tel:+919876543210" className="inline-flex items-center justify-between gap-3 border border-white/15 text-white px-8 py-4 text-xs font-[700] uppercase tracking-widest hover:border-white/40 transition-colors">
+                            <a href="tel:08853989909" className="inline-flex items-center justify-between gap-3 border border-white/15 text-white px-8 py-4 text-xs font-[700] uppercase tracking-widest hover:border-white/40 transition-colors">
                                 <span className="flex items-center gap-2"><Phone className="w-3.5 h-3.5" /> Call Now</span>
                                 <ArrowRight className="w-4 h-4" />
                             </a>

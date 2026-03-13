@@ -135,7 +135,7 @@ const AdminLogin: React.FC = () => {
                                     onChange={e => setEmail(e.target.value)}
                                     onFocus={() => setFocused('email')}
                                     onBlur={() => setFocused(null)}
-                                    placeholder="admin@ompowersolutions.com"
+                                    placeholder="admin@ompowersolution.com"
                                     className={`${fieldBase} ${fieldBorder('email')} pl-11`}
                                     required
                                 />

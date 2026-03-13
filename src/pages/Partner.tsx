@@ -438,17 +438,17 @@ const Partner: React.FC = () => {
 
                             {/* Contact alternatives */}
                             <div className="space-y-3">
-                                <a href="tel:+919876543210" className="flex items-center gap-3 text-gray-500 hover:text-gray-300 transition-colors text-sm group">
+                                <a href="tel:08853989909" className="flex items-center gap-3 text-gray-500 hover:text-gray-300 transition-colors text-sm group">
                                     <div className="w-8 h-8 bg-white/5 flex items-center justify-center group-hover:bg-white/10 transition-colors">
                                         <Phone className="w-3.5 h-3.5" />
                                     </div>
-                                    +91 98765 43210
+                                    088539 89909
                                 </a>
-                                <a href="mailto:partners@ompowersolutions.com" className="flex items-center gap-3 text-gray-500 hover:text-gray-300 transition-colors text-sm group">
+                                <a href="mailto:info@ompowersolution.com" className="flex items-center gap-3 text-gray-500 hover:text-gray-300 transition-colors text-sm group">
                                     <div className="w-8 h-8 bg-white/5 flex items-center justify-center group-hover:bg-white/10 transition-colors">
                                         <Mail className="w-3.5 h-3.5" />
                                     </div>
-                                    partners@ompowersolutions.com
+                                    info@ompowersolution.com
                                 </a>
                             </div>
                         </div>
@@ -479,11 +479,11 @@ const Partner: React.FC = () => {
                                 {/* Row 1 */}
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10">
                                     {[
-                                        { name: 'name', label: 'Full Name *', placeholder: 'Rajesh Sharma', type: 'text' },
-                                        { name: 'email', label: 'Email Address *', placeholder: 'rajesh@company.com', type: 'email' },
-                                        { name: 'phone', label: 'Phone Number *', placeholder: '+91 90000 00000', type: 'tel' },
-                                        { name: 'company', label: 'Company / Firm', placeholder: 'Your company (if any)', type: 'text' },
-                                        { name: 'city', label: 'City / Region *', placeholder: 'Delhi, Mumbai…', type: 'text' },
+                                        { name: 'name', label: 'Full Name *', placeholder: 'Enter Your FullName', type: 'text' },
+                                        { name: 'email', label: 'Email Address *', placeholder: 'Enter Your Email', type: 'email' },
+                                        { name: 'phone', label: 'Phone Number *', placeholder: 'Enter Your Phone Number', type: 'tel' },
+                                        { name: 'company', label: 'Company / Firm', placeholder: 'Enter Your Company Name', type: 'text' },
+                                        { name: 'city', label: 'City / Region *', placeholder: 'Enter Your City', type: 'text' },
                                     ].map(f => (
                                         <div key={f.name} className="pb-8">
                                             <label className="block text-[0.6rem] font-[800] uppercase tracking-[0.2em] text-gray-600 mb-1">{f.label}</label>
